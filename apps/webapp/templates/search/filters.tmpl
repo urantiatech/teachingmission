@@ -1,0 +1,115 @@
+{{ define "filters" }}
+    <div class="row">
+        <!-- filter by Category -->
+        <div class="col s12 m6 l3 center">
+            <ul id="dropdown1" class="dropdown-content">
+                 <li>
+                      <input type="checkbox" class="filled-in" id="all" />
+                      <label for="all">Clear All</label>
+                </li>
+                <li>
+                      <input type="checkbox" class="filled-in" id="test5" />
+                      <label for="test5">Red</label>
+                </li>
+                <li>
+                      <input type="checkbox" id="test6" checked="checked" />
+                      <label for="test6">Yellow</label>
+                </li>
+                <li>
+                      <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+                      <label for="filled-in-box">Category 2</label>
+                </li>
+            </ul>
+            <a class="btn dropdown-button waves-effect waves-light orange" href="#!" data-activates="dropdown1">Filter by Category<i class="mdi-navigation-arrow-drop-down right"></i></a>
+
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a href="#" class="-text">Sort A-Z</a></li>
+                <li><a href="#!" class="-text">Sort Z-A</a></li>
+                <li><a href="#!" class="-text">Best Match</a></li>
+            </ul>
+            <a class="dropdown-button btn-floating waves-effect waves-light orange" href="#!" data-activates="dropdown2"><i class="mdi-action-swap-vert"></i></a>
+        </div>
+
+        <!-- filter by Teacher -->
+        <div class="col s12 m6 l3 center">
+            <ul id="dropdown3" class="dropdown-content">
+                <li><a href="&t=christ-michael" class="-text">one<span class="badge">1</span></a></li>
+                <li><a href="#!" class="-text">two<span class="new badge ">2</span></a></li>
+                <li><a href="#!" class="-text">three</a></li>
+            </ul>
+            <a class="btn dropdown-button waves-effect waves-light orange" href="#!" data-activates="dropdown1">Filter by Teacher<i class="mdi-navigation-arrow-drop-down right"></i></a>
+            <ul id="dropdown4" class="dropdown-content">
+                <li><a href="#!" class="-text">Sort A-Z</a></li>
+                <li><a href="#!" class="-text">Sort Z-A</a></li>
+                <li><a href="#!" class="-text">Best Match</a></li>
+            </ul>
+            <a class="dropdown-button btn-floating waves-effect waves-light orange" href="#!" data-activates="dropdown2"><i class="mdi-action-swap-vert"></i></a>
+        </div>
+
+        <!-- filter by Receiver -->
+        <div class="col s12 m6 l3 center">
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="#!" class="-text">one<span class="badge">1</span></a></li>
+                <li><a href="#!" class="-text">two<span class="new badge ">2</span></a></li>
+                <li><a href="#!" class="-text">three</a></li>
+            </ul>
+            <a class="btn dropdown-button waves-effect waves-light orange" href="#!" data-activates="dropdown1">Filter by Receiver<i class="mdi-navigation-arrow-drop-down right"></i></a>
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a href="#!" class="-text">Sort A-Z</a></li>
+                <li><a href="#!" class="-text">Sort Z-A</a></li>
+                <li><a href="#!" class="-text">Best Match</a></li>
+            </ul>
+            <a class="dropdown-button btn-floating waves-effect waves-light orange" href="#!" data-activates="dropdown2"><i class="mdi-action-swap-vert"></i></a>
+        </div>
+
+        <!-- filter by Team -->
+        <div class="col s12 m6 l3 center">
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="#!" class="-text">one<span class="badge">1</span></a></li>
+                <li><a href="#!" class="-text">two<span class="new badge ">2</span></a></li>
+                <li><a href="#!" class="-text">three</a></li>
+            </ul>
+            <a class="btn dropdown-button waves-effect waves-light orange" href="#!" data-activates="dropdown1">Filter by Team<i class="mdi-navigation-arrow-drop-down right"></i></a>
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a href="#!" class="-text">Sort A-Z</a></li>
+                <li><a href="#!" class="-text">Sort Z-A</a></li>
+                <li><a href="#!" class="-text">Best Match</a></li>
+            </ul>
+            <a class="dropdown-button btn-floating waves-effect waves-light orange" href="#!" data-activates="dropdown2"><i class="mdi-action-swap-vert"></i></a>
+        </div>
+    </div>
+
+    <!-- Date Chart start -->
+    <!-- div id="chartjs" class="section">
+      <h4 class="header">Filter by Date</h4>
+      <div class="row">
+        <div class="col s12 center">
+          <div class="sample-chart-wrapper">
+            <canvas id="line-chart-sample" height="40"></canvas>
+          </div>
+        </div>
+      </div>
+    </div -->
+
+    <!--Bar Chart-->
+    <!-- div id="chartist-chart-1" class="section">
+      <h4 class="header">Transcripts by Date</h4>
+      <div class="row">
+        <div class="col s12 center">
+          <div class="sample-chart-wrapper">
+            <div class="ct-chart ct-golden-section" id="ct2-chart-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div -->
+
+    <!-- Range Slider -->
+    <div class="row">
+        <div class="col s12">
+            <div id="range_07">
+            </div>
+        </div>
+    </div>
+
+    <!--Date Chart end -->
+{{ end }}

@@ -1,0 +1,15 @@
+{{ define "search" }}
+    
+    <!-- search filter start -->
+    {{ template "filters" . }}
+    <!-- search filter end -->
+
+    <!-- Search Results start -->
+    {{ template "results" . }}
+    <!-- Search Results end -->
+ 
+     <!-- External Search Results start -->
+    {{ template "externalresults" . }}
+    <!-- External Search Results end -->
+
+{{ end }}

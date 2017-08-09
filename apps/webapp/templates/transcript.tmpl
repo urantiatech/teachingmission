@@ -1,0 +1,28 @@
+{{ define "transcript" }}
+	<div class="row">
+		<div class="col s12">
+			<div class="card orange darken-1">
+				<div class="card-content white-text">
+
+					<h1>{{ .Title }}</h1>
+					<ul>
+						<li>Location: {{ .Location }}</li>
+						<li>Date: {{ .Date }}</li>
+						<li>Teacher: {{ range .Teacher }} {{ .Name }} {{ end }}</li>
+						<li>Receiver: {{ .Receiver.Name }}</li>
+					</ul>
+
+					{{ range .Body }}
+						{{ with .Heading }}
+							<b>{{ . }}</b><br><br> 
+						{{ end }}
+						{{ range .Paragraph }}
+							<p>{{ . }}</p><br>
+						{{ end }}
+					{{ end }}
+
+				</div>
+			</div>
+		</div>
+	</div>
+{{ end }}

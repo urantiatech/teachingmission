@@ -1,0 +1,38 @@
+{{ define "externalresults" }}
+
+    <!-- External search results start -->
+    <div class="row">
+      <div class="col s12">
+        <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+        {{ range .ExternalResults }}
+          <li>
+            <div class="collapsible-header light-blue light-blue-text text-lighten-5">
+                <i class="mdi-communication-business"></i> {{ .Title }}
+            </div>
+            <div class="collapsible-body light-blue lighten-5">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+          </li>
+        {{ end }}
+        </ul>
+      </div>
+    </div>
+    <!-- External search results end -->
+
+    <!-- Pagination start -->
+    <div class="col s12 center">
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
+        </ul>
+    </div>
+    <!-- Pagination end -->
+    
+{{ end }}

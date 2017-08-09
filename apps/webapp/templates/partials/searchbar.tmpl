@@ -1,0 +1,17 @@
+{{ define "searchbar" }}
+
+    <!-- SearchBar start -->
+    <form class="" action="/">
+        <div class="row">
+            <div class="col s8 offset-s1">
+                <input type="text" name="search" class="" placeholder="Search Teaching Mission archives ..." />
+                    <!-- value="{ { with .Search } } { {- .Keywords -} } { { end } }"-->
+            </div>
+            <div class="col s3 left">
+                <button class="btn" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+    <!-- SearchBar end -->
+
+{{ end }}
