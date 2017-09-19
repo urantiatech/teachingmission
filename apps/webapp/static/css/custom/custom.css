@@ -1,18 +1,209 @@
-/*================================================================================
-	Item Name: Materialize - Material Design Admin Template
-	Version: 3.1
-	Author: GeeksLabs
-	Author URL: http://www.themeforest.net/user/geekslabs
-================================================================================
 
-NOTE:
-------
-PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
-WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+/* Home Navigation start */
+
+
+/* Home Navigation end */
+
+/* Modal Bottom Search Filters start */
+
+.modal-search-filters {
+	margin: 0px;
+	max-height: 100%;
+}
+
+/* Modal Bottom Search Filters end */
+
+/* HOME PAGE START */
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 90%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: /*whatever width you want*/;
+}
+
+.home-footer {
+    position:fixed;
+    bottom:0px;
+    height:auto;
+    width:100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/* HOME PAGE END */
+.header-note {
+  margin: 0px auto 0 300px;
+  width: calc(100% - 600px);
+  height: 40px;
+  display: inline-block;
+  position: relative; }
+
+/* Header search bar start */
+header .brand-logo img {
+    width: 222px;
+}
+.header-search-wrapper {
+    margin-left: 300px;
+}
+
+.header-search-wrapper {
+    width: calc(100% - 650px);
+}
+
+.header-slogan {
+}
+/* Header search bar end */
+
+.container {
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 90%;
+}
+
+@media only screen and (min-width: 301px) {
+	.container {
+		width: 95%;
+	}
+	.search-banner {
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+	.search-results-banner {
+		padding-top: 20px;
+		padding-bottom: 10px;
+	}
+
+	.search-input-field {
+		width: 100%;
+	}
+	.search-button-card {
+		padding-left: 19px;
+		padding-right: 19px;
+	}
+	.search-read-filter-icons {
+		padding-top: 6px;
+	}
+	.filter-button {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+	.card.small {
+	  height: 120px;
+	}
+	.card.card-gap  {
+	}
+}
+
+@media only screen and (min-width: 601px) {
+	.container {
+		width: 90%;
+	}
+	.search-banner {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.search-results-banner {
+		padding-top: 40px;
+		padding-bottom: 30px;
+	}
+
+	.search-input-field {
+		width: 90%;
+	}
+	.search-submit-button {
+		padding-left: 18px;
+		padding-right: 18px;
+	}
+	.filter-button {
+		padding-left: 18px;
+		padding-right: 18px;
+	}
+	.card.small {
+		height: 150px;
+	}
+	.card.card-gap  {
+		margin: 20px;
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	.container {
+		width: 85%;
+	}
+	.search-banner {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.search-results-banner {
+		padding-top: 50px;
+		padding-bottom: 30px;
+	}
+	.search-input-field {
+		width: 90%;
+	}
+	.search-submit-button {
+		padding-left: 20px;
+		padding-right: 20px;
+	}	
+	.card.small {
+		height: 150px;
+	}
+	.card.card-gap  {
+		margin: 36px;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	.container {
+		width: 70%;
+	}
+	.search-banner {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.search-results-banner {
+		padding-top: 50px;
+		padding-bottom: 30px;
+	}
+
+	.search-input-field {
+		width: 90%;
+	}
+	.search-submit-button {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+	.card.small {
+		height: 150px;
+	}
+	.card.card-gap  {
+		margin: 50px;
+	}
+}
+
+
+.card .card-content p {
+	padding: 10px;
+}
 
 /*----------------------------------------
     Charts
 ------------------------------------------*/
+
 #chart-dashboard  {
   padding-top: 16px;
 }
@@ -204,3 +395,90 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 
 /* Tap Target end */
+
+
+/* Cards start */
+
+.card {
+  position: relative;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
+  transition: box-shadow .25s;
+  border-radius: 5px;
+}
+
+.card.small .card-content, .card.medium .card-content, .card.large .card-content {
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.card .card-content {
+  padding: 20px;
+  border-radius: 0 0 2px 2px;
+}
+
+.card .card-content p {
+  margin: 0;
+  color: inherit;
+}
+
+.card .card-action {
+  border-top: 0px;
+  padding: 20px;
+}
+
+/* Card end */
+
+/* Search Homepage start */
+
+/* Check the "search-banner" & "search-form" in media only */
+
+/* Search Homepage end */
+
+.banner-middle {
+	verticle-align: middle;
+	text-align: center;
+}
+
+.padding-16px {
+	padding: 16px;
+}
+
+.padding-1px {
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+.padding-left-16px {
+	padding-left: 16px;
+}
+
+.home-searchbar {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	vertical-align: center;
+	height: 100%;
+}
+
+
+/* UB Definitions start */
+.ub-term {
+	/* color: #ff5252; red */
+	/* color: #5a7e8c; grey */
+	color: #5a7e8c; 
+}
+/* UB Definitions end */
+
+.fav-read-seen-filter {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.radio-search-filter {
+	padding-right: 40px;
+}
+
+footer {
+	position: relative;
+	bottom: 0px;
+}

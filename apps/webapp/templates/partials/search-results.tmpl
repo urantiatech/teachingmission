@@ -1,0 +1,98 @@
+{{ with .Search }}
+
+	<!-- Search Results start -->
+    <p class="caption">Displaying {{ firstRecord .Skipped .Limit .Total }} - 
+        {{ lastRecord .Skipped .Limit .Total }}
+        of {{ .Total }} results <span class="hide-on-small-only">of the query: <em><b><q>{{ .Query }}</q></b></em> </p></span>
+
+    <!-- Internal search results start -->
+    <div class="row">
+    {{ range $i, $v := .Results }}
+        {{ if rowStart $i }}
+
+        {{ end }}
+            <div class="col s12 m6 l3">
+
+                {{ $mark := markedAs }}
+
+                <div class="card small {{ randomColor }}" v-if="showSearchCard({{ $mark }})">
+                    <a href="/transcript/{{ .Id }}">
+                        <div class="card-content white-text">
+                            <p class="header white-text">{{ title .Title }}</p>
+                            <!-- p class="hide-on-med-and-down">{{ .Excerpts }}</p -->
+
+                        </div>
+                        <div class="card-action">
+                            {{ if eq $mark 3 }}
+                            <i class="mdi-action-favorite-outline white-text tiny"></i>
+                            {{ else if eq $mark 2 }}
+                            <i class="mdi-action-done white-text tiny"></i>
+                            {{ else if eq $mark 1 }}
+                            <i class="mdi-action-visibility white-text tiny"></i>
+                            {{ end }}
+
+
+
+                            <!-- i class="mdi-action-star-rate white-text tiny"></i -->
+                            <span class="white-text right">
+                                {{ range $j, $v :=  .Teachers }}
+                                    {{ if $j }} , {{ .Name }} {{ else }} &mdash;  {{ .Name }} {{ end }}
+                                {{ end }}
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    {{ end }}
+    </div>
+    <!-- Internal search results end -->
+
+<br>
+
+    <!-- Pagination start -->
+    {{ $query := .Query }} 
+    {{ $filter := .Filters }}
+    {{ $total := .Total }} {{ $limit := .Limit }} {{ $skipped := .Skipped }} 
+    {{ $leftlink := pagerLeftLink $query $filter $limit $skipped }}
+    {{ $rightlink := pagerRightLink $query $filter $limit $skipped $total}}
+    
+    {{ if .Total }}
+    <div class="col s12 center">
+        <ul class="pagination">
+        {{ if .Skipped }}
+            <li class="waves-effect hide-on-small-only"><a href="{{ $leftlink }}">
+                <i class="mdi-navigation-chevron-left"></i></a>
+            </li>
+        {{ else }}
+            <li class="disabled hide-on-small-only"><a href="#!"><i class="mdi-navigation-chevron-left"></i></a>
+        {{ end }}
+
+
+        {{ range $i, $p := pagerAllLabels $query $filter $limit $skipped $total }}
+            {{ if pagerIsActive $limit $skipped $p.Num }}
+            <li class="active white-text">{{ $p.Label }}</li>
+            {{ else }}
+                {{ if eq $p.Label "..." }}
+                    <li class="">...</li>
+                {{ else }}
+                    <li class="waves-effect {{ if $p.Hide -}} hide-on-med-and-down {{- end }}"><a href="{{ $p.Uri }}">{{ $p.Label }}</a></li> 
+                {{ end }}
+            {{ end }}
+        {{ end }}
+
+
+        {{ if $rightlink }}
+            <li class="waves-effect hide-on-small-only"><a href="{{ $rightlink }}">
+                <i class="mdi-navigation-chevron-right"></i></a>
+            </li>
+        {{ else }}
+            <li class="disabled hide-on-small-only"><a href="#!"><i class="mdi-navigation-chevron-right"></i></a>
+        {{ end }}
+        </ul>
+    </div>
+    <br>
+    {{ end }}
+    <!-- Pagination end -->
+
+	<!-- Search Results end -->
+{{ end }}

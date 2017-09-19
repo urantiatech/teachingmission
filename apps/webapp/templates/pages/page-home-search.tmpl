@@ -1,0 +1,48 @@
+{{ define "content" }}
+<div class="home-searchbar">
+	<div class="row">
+		<div class="col l8 offset-l2 center">
+
+			<img src="/images/tm-search-banner.png" class="hide-on-med-and-down">
+			<img src="/images/tm-search-banner-medium.png" class="hide-on-large-only hide-on-small-only">
+			<img src="/images/tm-search-banner-small.png" class="hide-on-med-and-up">
+
+		</div>
+	</div>
+
+    <!-- Alert Message -->
+
+
+    <!-- Small Search form -->
+    <div class="row search-form">
+        <div class="col s12 m12 l8 offset-m0 offset-l2">
+            {{ template "searchbar.tmpl" . }}
+        </div>
+    </div>
+
+    <!-- Home links start -->
+    <div class="row ">
+        <div class="col s12 center">
+            <ul class="pagination">
+                <li><a href="/archives"> Browse Archives </a></li>
+                <li><a href="/page/tm-introduction"> TM Introduction </a></li>
+                <!-- li><a href="/page/tm-historical-timeline"> Historical Timeline </a></li -->
+            </ul>
+        </div>
+    </div>
+    <!-- Home links end -->
+</div>
+{{ end }}
+
+{{ define "css" }}
+    <link href="/css/plugins/sweetalert2.css" type="text/css" rel="stylesheet" media="screen,projection">
+{{ end }}
+
+{{ define "scripts" }}
+    <!--sweetalert -->
+    <script type="text/javascript" src="/js/plugins/sweetalert/dist/sweetalert2.min.js"></script>
+    <!--angularjs-->
+    <script type="text/javascript" src="/js/plugins/angular.min.js"></script>
+    <script type="text/javascript" src="/js/search.js"></script>
+    {{ template "searchbar-js.tmpl" . }}
+{{ end }}

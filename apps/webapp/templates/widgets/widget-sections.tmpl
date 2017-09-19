@@ -1,0 +1,17 @@
+
+
+{{ define "widget-sections" }}
+{{ range .Listings.Sections.Sections}}
+
+<div class="row">
+	<div class="col s12">
+		<div class="card grey lighten-3">
+			<div class="card-content">
+				<h4 class="header">{{ .Name }}</h4>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{ end }}
+{{ end }}

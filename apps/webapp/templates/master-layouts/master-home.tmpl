@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    {{ block "meta" . }}{{ end }}
+
+    {{ block "title" . }}{{ end }}
+
+    <!-- Favicons-->
+    <link rel="icon" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="/images/favicon/apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
+
+    <!-- CSS start -->
+    {{ template "stylesheets.tmpl" . }}
+    <!-- Other Page Specific CSS -->
+    {{ block "css" . }}{{ end }}
+    <!-- CSS end -->
+
+</head>
+
+<body>
+
+    <!-- START MAIN -->
+    <div id="main">
+
+    <!-- START HEADER -->
+    {{ template "header.tmpl" . }}
+    <!-- END HEADER -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            <!-- START LEFT SIDEBAR NAV-->
+            {{ template "navigation.tmpl" . }}
+            <!-- END LEFT SIDEBAR NAV-->
+
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <div class="outer">
+
+
+                <!--start container-->
+                <div class="container middle">
+
+                        <div class="container inner">
+                        
+                        {{ block "page-contents" . }}{{ end }}
+
+                        </div>
+
+
+                </div>
+                <!--end container-->
+            </div>
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            
+            <!-- START RIGHT SIDEBAR NAV-->
+            {{ template "help.tmpl" . }}
+            <!-- LEFT RIGHT SIDEBAR NAV-->
+
+        </div>
+        <!-- END WRAPPER -->
+
+    </div>
+    <!-- END MAIN -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START FOOTER -->
+    {{ template "home-footer.tmpl" . }}
+    <!-- END FOOTER -->
+
+    <!-- Scripts start -->
+    {{ template "scripts.tmpl" . }}
+    {{ block "scripts" . }}{{ end }}
+    <!-- Scripts end -->
+
+</body>
+
+</html>

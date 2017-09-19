@@ -1,0 +1,130 @@
+{{ block "scripts" . }}
+<script>
+$("#range_07").ionRangeSlider({
+    type: "double",
+    grid: true,
+    from: 1,
+    to: 5,
+    values: [0, 10, 100, 1000, 10000, 100000, 1000000]
+});
+</script>
+
+<script>
+    var app = new Vue({
+        el: '#search-filters',
+        data: {
+            categoryList: [
+                {id: '', name: 'All Categories'},
+                {id: 'category-a', name: 'Category A'},
+                {id: 'category-b', name: 'Category B'},
+                {id: 'category-c', name: 'Category C'}
+            ],
+            categoryName: 'All Categories',
+            categoryId: '',
+
+            teacherList: [
+                {id: '', name: 'All Teachers'},
+                {id: 'teacher-ophelius', name: 'Teacher Ophelius'},
+                {id: 'christ-michael', name: 'Christ Michael'},
+                {id: 'thought-adjuster', name: 'Thought Adjuster'}
+            ],
+            teacherName: 'All Teachers',
+            teacherId: '',
+
+
+            beingList: [
+                {id: '', type: 'All Beings'},
+                {id: 'former-humans', type: 'Former Humans'},
+                {id: 'thought-adjusters', type: 'Thought Adjusters'},
+                {id: 'midwayers', type: 'Midwayers'}
+            ],
+            beingType: 'All Beings',
+            beingId: '',
+
+            receiverList: [
+                {id: '', name: 'All Receivers'},
+                {id: 'chris-maurus', name: 'Chris Maurus'},
+                {id: 'george-barnard', name: 'George Barnard'},
+                {id: 'anyas-spencer', name: 'Anyas Spencer'}
+            ],
+            receiverName: 'All Receivers',
+            receiverId: '',
+
+            link: 'localhost'
+        },
+        methods: {
+            applyFilter: function () {
+                alart('Option selected')
+            }
+        }
+    })
+</script>
+{{ end }}
+
+{{ with .Search }}
+
+
+    <!-- search filter start -->
+    <div  id="search-filters" class="row">
+        <!-- Category filter start -->
+        <div class="col s12 m6 l3 center">
+            <ul id="categoryfilter" class="dropdown-content">
+                <li><span v-on:click="applyFilter" class="blue-text">Hello World</span></li>
+            </ul>
+            <span class="btn dropdown-button waves-effect waves-light orange" href="link" data-activates="categoryfilter">{{ vue `categoryName` }}<i class="mdi-navigation-arrow-drop-down right"></i></span>
+            <!-- span class="card btn-floating waves-effect waves-light orange" href="#!" data-activates=""><i class="mdi-action-swap-vert"></i></span -->
+        </div>
+        <!-- Category filter end -->
+
+        <!-- Teacher filter start -->
+        <div class="col s12 m6 l3 center">
+            <ul id="teacherfilter" class="dropdown-content">
+                <li v-for="teacher in teacherList"><span v-on:click="applyFilter" class="">{{ vue `teacher.name` }}</span></li>
+            </ul>
+            <span class="card btn dropdown-button waves-effect waves-light orange" href="#!" data-activates="teacherfilter">{{ vue `teacherName` }}<i class="mdi-navigation-arrow-drop-down right"></i></span>
+            <!-- span class="card btn-floating waves-effect waves-light orange" href="#!" data-activates=""><i class="mdi-action-swap-vert"></i></span -->
+        </div>
+        <!-- Teacher filter end -->
+
+        <!-- Being Type filter start -->
+        <div class="col s12 m6 l3 center">
+            <ul id="beingfilter" class="dropdown-content">
+                <li v-for="being in beingList"><span v-on:click="applyFilter" class="">{{ vue `being.type` }}</span></li>
+            </ul>
+            <span class="card btn dropdown-button waves-effect waves-light orange" href="#!" data-activates="beingfilter">{{ vue `beingType` }}<i class="mdi-navigation-arrow-drop-down right"></i></span>
+            <!-- span class="card btn-floating waves-effect waves-light orange" href="#!" data-activates=""><i class="mdi-action-swap-vert"></i></span -->
+        </div>
+        <!-- Being Type filter end -->
+
+        <!-- Receiver filter start -->
+        <div class="col s12 m6 l3 center">
+            <ul id="receiverfilter" class="dropdown-content">
+                <li v-for="receiver in receiverList"><span v-on:click="applyFilter" class="">{{ vue `receiver.name` }}</span></li>
+            </ul>
+            <span class="card btn dropdown-button waves-effect waves-light orange" href="#!" data-activates="receiverfilter">{{ vue `receiverName` }}<i class="mdi-navigation-arrow-drop-down right"></i></span>
+            <!-- span class="card btn-floating waves-effect waves-light orange" href="#!" data-activates=""><i class="mdi-action-swap-vert"></i></span -->
+        </div>
+        <!-- Receiver filter end -->
+    </div>
+
+    <!-- Date Chart start -->
+    <!--Bar Chart-->
+    <!--div id="chartjs-bar-chart" class="section">
+      <h4 class="header">Filter by Date</h4>
+      <div class="row">
+        <div class="col s12 m4 l3">
+            Start Date<input type="date" class="datepicker">
+            End Date<input type="date" class="datepicker">
+        </div>
+        <div class="col s12 m8 l9">
+          <div class="sample-chart-wrapper">
+            <div id="bar-chart-sample"></div>
+                <div id="range_07"></div>
+          </div>
+        </div>
+      </div>
+    </div -->
+    <!--Date Chart end -->
+
+    <!-- search filter end -->
+{{ end }}

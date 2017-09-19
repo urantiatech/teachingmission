@@ -1,0 +1,34 @@
+{{ if .Dictionary }}
+<div id="dictionary" class="section scrollspy">
+
+    <!-- Floating Action Button start -->
+    <div class="fixed-action-btn" style="bottom: 40px; right: 24px;">
+        <a id="menu" onclick="$('.help').tapTarget('open')" class="btn btn-floating btn-large">
+            <i class="mdi-av-my-library-books"></i>
+        </a>
+    </div>
+    <!-- Floating Action Button end -->
+
+    <!-- Help about how to use Dictionary -->
+    <div class="help tap-target" data-activates="menu">
+        <div class="tap-target-content white-text">
+            <h5 class="right-align">UB Dictionary</h5>
+            <p class="white-text left-left">This is a dictionary containg definitions of terms used in the Urantia Book.  Click on the highlited term in the main content to see its definition.</p>
+            <!-- a class="btn">Disable Highliting</a -->
+        </div>
+    </div>
+
+    {{ range .Dictionary.Definitions }}
+    <div class="{{- slug .Term }} tap-target" data-activates="menu">
+        <div class="tap-target-content white-text">
+            <h5 class="right-align">{{ .Term }}</h5>
+            <p class="white-text left-align">{{ .Value }}</p>
+        </div>
+    </div>
+    {{ end }}
+
+</div>
+{{ else }}
+<div id="dictionary" class="section scrollspy">
+</div>
+{{ end }}

@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col s12">
+		<div class="card grey lighten-2">
+			<div class="card-content">
+			{{ with .Transcript }}
+
+				<h1 class="padding-left-16px">{{ .Title | title}}</h1>
+				<ul class="padding-left-16px">
+					<li>Location: {{ .Location }}</li>
+					<li>Date: {{ .Date }}</li>
+					<li>Teacher: {{ range $i, $v := .Teachers }}{{ if $i }}, {{ end }}{{ .Name }}{{ end }}</li>
+					<li>Receiver: {{ .Receiver.Name }}</li>
+				</ul>
+
+				{{ with .Body }}
+					{{ range .Sections }}
+						{{ with .Heading }}
+							<b>{{ . }}</b><br><br> 
+						{{ end }}
+						{{ range .Paragraph }}
+							<p class="caption">{{ . }}</p><br>
+						{{ end }}
+					{{ end }}
+
+					{{ range .Paragraphs }}
+						<p class="caption">{{ . }}</p>
+					{{ end }}
+				{{ end }}
+
+			{{ end }}
+
+			{{ if not .Transcript }}
+				<h1>Page Not Found</h1>
+				{{ if .Translations }}
+					{{ $id := .Translations.Id }}
+					<p>This page is available in following languages:</p>
+					{{ range .Translations.Headers }}
+						<a href="http://{{- subdomain .Language -}}.teachingmission.org:8080/transcript/{{- $id -}}" class="collection-item">
+							<img src="/images/flag-icons/{{- flag .Language -}}">
+						</a>
+					{{ end }}
+
+				{{ end }}
+			{{ end }}
+			</div>
+		</div>
+	</div>
+</div>

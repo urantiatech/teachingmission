@@ -1,17 +1,212 @@
-{{ define "searchbar" }}
+<!-- SearchBar start -->
+<nav id="searchbar">
 
-    <!-- SearchBar start -->
-    <form class="" action="/">
-        <div class="row">
-            <div class="col s8 offset-s1">
-                <input type="text" name="search" class="" placeholder="Search Teaching Mission archives ..." />
-                    <!-- value="{ { with .Search } } { {- .Keywords -} } { { end } }"-->
+<!--h1>?q={{ vue `q` }}&c={{ vue `cValue` }}&g={{ vue `gValue` }}&b={{ vue `bValue` }}&t={{ vue `tValue` }}&r={{ vue `rValue` }}</h1-->
+
+    <div class="nav-wrapper blue-grey">
+        <!-- Search form start -->
+        <form class="row" action="/">
+
+            <div class="card blue-grey">
+                <!-- Filter icon -->
+                <div class="col s12 m2 l2 hide-on-small-only">
+                    <ul class="left">
+                        <li>
+                            <i @click="toggleFilterList()" :class="filterListIconClass"></i>
+                        </li> 
+                        <li>
+                            <i @click="toggleRangeSlider()" :class="rangeSliderIconClass"></i>
+                        </li> 
+                    </ul>
+                </div>
+                <!-- Search Field -->
+                <div class="col s10 offset-s1 m6 l6 input-field">
+                    <div class="left search-input-field">
+                        <input id="search"
+                            name="q" type="text" required="" placeholder="Search TM archives ..." 
+                            value="{{ with .Search }} {{- .Query -}} {{ end }}">
+                        <label for="search" class=""><i class="mdi-action-search"></i></label>
+                        <input type="hidden" v-if="c != 'c.'" name="c" :value="cValue">
+                        <input type="hidden" v-if="g != 'g.'" name="g" :value="gValue">
+                        <input type="hidden" v-if="b != 'b.'" name="b" :value="bValue">
+                        <input type="hidden" v-if="t != 't.'" name="t" :value="tValue">
+                        <input type="hidden" v-if="r != 'r.'" name="r" :value="rValue">
+                        <input type="hidden" v-if="y1 != 0" name="y1" :value="y1">
+                        <input type="hidden" v-if="y2 != 0" name="y2" :value="y2">
+                    </div>
+                </div>
+
+                <div class="col m4 l4">
+                    <ul class="right hide-on-small-only">
+                        <li>
+                            <i @click="toggleFavorite()" :class="hideFavoriteClass"></i>
+                        </li>
+                        <li>
+                            <i @click="toggleRead()" :class="hideReadClass"></i>
+                        </li>
+                        <li>
+                            <i @click="toggleSeen()" :class="hideSeenClass"></i>
+                        </li>
+                        <li>
+                            <i>&nbsp;</i>
+                        </li>
+                        <li>
+                            <button class="btn waves-effect waves-light search-submit-button" type="submit">Go</button>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
-            <div class="col s3 left">
-                <button class="btn" type="submit">Search</button>
+
+            <!-- Search Filters -->
+            <div class="col s12 m12 l12">
+                <ul :class="modalShowClass">
+                    <li>
+                        <a href="#categoryModal"  :class="categoryButtonClass">C</a>
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li>
+                        <a href="#groupModal" :class="groupButtonClass">G</a>
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li>
+                        <a href="#beingModal" :class="beingButtonClass">B</a>
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li>
+                        <a href="#teacherModal" :class="teacherButtonClass">T</a>
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li>
+                        <a href="#receiverModal" :class="receiverButtonClass">R</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Date Range -->
+            <div class="col s12 m12 l12">
+                <div v-if="showSlider">
+                    <div id="date_range"></div>
+                </div>
+            </div>
+
+            <!-- Date Range -->
+            <div class="col s12 m12 l12">
+
+            </div>
+
+
+
+
+            <!-- Mobile Submit Button -->
+            <div class="col s12">
+
+                <ul class="left hide-on-med-and-up">
+                    <li class="card blue-grey">
+                        <a class="btn-flat white-text waves-effect waves-light search-button-card" 
+                            @click="toggleMobileFilters()" >
+                            <i :class="filterListIconClass"></i></a>
+                    </li>
+                </ul>
+
+                <ul class="btn-flat fav-read-seen-filter hide-on-med-and-up search-read-filter-icons">
+                    <li>
+                        <i @click="toggleFavorite()" :class="hideFavoriteClass"></i>
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li>
+                        <i @click="toggleRead()" :class="hideReadClass"></i>
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li>
+                        <i @click="toggleSeen()" :class="hideSeenClass"></i>
+                    </li>
+                </ul>
+
+                <ul class="right hide-on-med-and-up">
+
+                    <li class="card red accent-2">
+                        <button class="btn-flat white-text waves-effect waves-light search-button-card" 
+                        type="submit" name="action">Go</button>
+                    </li>
+                </ul>
+            </div>
+
+        </form>
+        <!-- Search form end -->
+
+        <!-- Category Filter Modals -->
+        <div id="categoryModal" class="modal bottom-sheet">
+            <div class="modal-content red-text">
+                <h4>Filter by Category</h4>
+                <ul>
+                    <li v-for="category in filters.categories">
+                        <input name="category" type="radio"
+                            :id="category.id" :value="category.id" v-model="c" class="modal-close with-gap" />
+                        <label :for="category.id">{{ vue `category.name` }}</label>
+                    </li>
+                </ul>
             </div>
         </div>
-    </form>
-    <!-- SearchBar end -->
 
-{{ end }}
+        <!-- Group Filter Modals -->
+        <div id="groupModal" class="modal bottom-sheet">
+            <div class="modal-content red-text">
+                <h4>Filter by Group</h4>
+                <ul>
+                    <li v-for="group in filters.groups">
+                        <input name="group" type="radio" 
+                            :id="group.id" :value="group.id" v-model="g" class="modal-close with-gap" />
+                        <label :for="group.id">{{ vue `group.name` }}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Being Filter Modals -->
+        <div id="beingModal" class="modal bottom-sheet">
+            <div class="modal-content red-text">
+                <h4>Filter by Being: {{ vue `b` }}</h4>
+
+                <ul>
+                    <li v-for="being in filters.beings">
+                        <input name="being" type="radio" 
+                            :id="being.id" :value="being.id" v-model="b" class="modal-close with-gap" />
+                        <label :for="being.id">{{ vue `being.name` }}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Teacher Filter Modals -->
+        <div id="teacherModal" class="modal bottom-sheet">
+            <div class="modal-content red-text">
+                <h4>Filter by Teacher</h4>
+                <ul>
+                    <li v-for="teacher in filters.teachers">
+                        <input name="teacher" type="radio" 
+                            :id="teacher.id" :value="teacher.id" v-model="t" class="modal-close with-gap" />
+                        <label :for="teacher.id">{{ vue `teacher.name` }}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Receiver Filter Modals -->
+        <div id="receiverModal" class="modal bottom-sheet">
+            <div class="modal-content red-text">
+                <h4>Filter by Receiver</h4>
+                <ul>
+                    <li v-for="receiver in filters.receivers">
+                        <input name="receiver" type="radio" 
+                            :id="receiver.id" :value="receiver.id" v-model="r" class="modal-close with-gap" />
+                        <label :for="receiver.id">{{ vue `receiver.name` }}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<!-- SearchBar end -->

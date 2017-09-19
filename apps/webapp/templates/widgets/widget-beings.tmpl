@@ -1,0 +1,16 @@
+{{ define "widget-beings" }}
+<div class="row">
+	<div class="col s12">
+		<div class="card">
+			<div class="card-content">
+				<p class="header">Beings</p>
+				<div class="collection">
+				{{ range .Listings.Beings.Beings}}
+					<a href="#!" class="collection-item">{{ .Name }}</a>
+				{{ end }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ end }}

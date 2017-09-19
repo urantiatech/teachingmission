@@ -1,0 +1,325 @@
+<script type="text/javascript">
+
+//Set up you own numbers
+$("#date_range").ionRangeSlider({
+	type: "double",
+	grid: false,
+	min: 1980,
+	max: 2020,
+	from: 1985,
+	to: 2017,
+});
+
+
+// Vue Slider component start
+
+
+// Vue Slider component end
+
+var app = new Vue({
+	el: '#content-area',
+	
+	components: {
+		//vueSlider
+	},
+
+	data: {
+		q: '', // query 
+		c: 'c.{{ with .Search }} {{- .Filters.Category -}} {{ end }}', // category
+		g: 'g.{{ with .Search }} {{- .Filters.Group -}} {{ end }}', // group
+		b: 'b.{{ with .Search }} {{- .Filters.Being -}} {{ end }}', // being type
+		t: 't.{{ with .Search }} {{- .Filters.Teacher -}} {{ end }}', // teacher
+		r: 'r.{{ with .Search }} {{- .Filters.Receiver -}} {{ end }}', // receiver
+		y1: 0,
+		y2: 0,
+
+		{{ if .Search }}
+		showFilters: {{ isFilterAvailable .Search.Filters }},
+		showSlider: {{ isDateRangeAvailable .Search.Filters.StartDate .Search.Filters.EndDate }},
+		{{ else }}
+		showFilters: false,
+		showSlider: false,
+		{{ end }}
+
+
+		hideFavorite: false,
+		hideRead: false,
+		hideSeen: false,
+
+		sliderValue: 100,
+
+		filters: {
+			categories: [
+				{id: "c.", name:"All Groups"},
+				{{ range $c := .Listings.Categories.Categories }}
+				{id: "c.{{- $c.Id -}}", name:"{{- $c.Name -}}"},
+				{{ end }}
+			],
+
+			beings: [
+				{id: "b.", name:"All Beings"},
+				{{ range $b := .Listings.Beings.Beings }}
+				{id: "b.{{- $b.Id -}}", name:"{{- $b.Name -}}"},
+				{{ end }}
+			],
+			teachers: [
+				{id: "t.", name:"All Teachers"},
+				{{ range $t := .Listings.Teachers.Teachers }}
+				{id: "t.{{- $t.Id -}}", name:"{{- $t.Name -}}"},
+				{{ end }}
+			],
+			receivers: [
+				{id: "r.", name:"All Receivers"},
+				{{ range $r := .Listings.Receivers.Receivers }}
+				{id: "r.{{- $r.Id -}}", name:"{{- $r.Name -}}"},
+				{{ end }}
+			],
+		},
+
+		//  Modal Button class
+		modalButtonClass: 'btn waves-effect waves-light modal-trigger filter-button blue-grey',
+
+		showswal: true
+	},
+
+	mounted: function() {
+		this.initFilters()
+	},
+
+	computed: {
+		cValue: function() {
+			return this.c.slice(2)
+		},
+		gValue: function() {
+			return this.g.slice(2) 
+		},
+		bValue: function() {
+			return this.b.slice(2) 
+		},
+		tValue: function() {
+			return this.t.slice(2) 
+		},
+		rValue: function() {
+			return this.r.slice(2)
+		},
+		filterListIconClass: function() {
+			if (this.showFilters) {
+				return 'mdi-content-filter-list padding-1px orange-text'
+			} else {
+				return 'mdi-content-filter-list padding-1px'
+			}
+		},
+		rangeSliderIconClass: function() {
+			if (this.showSlider) {
+				return 'mdi-action-event padding-1px orange-text'
+			} else {
+				return 'mdi-action-event padding-1px'
+			}
+		},
+		hideFavoriteClass: function() {
+			if (this.hideFavorite) {
+				return 'mdi-action-favorite-outline padding-1px tiny orange-text'
+			} else {
+				return 'mdi-action-favorite-outline padding-1px tiny'
+			}
+		},
+		hideReadClass: function() {
+			if (this.hideRead) {
+				return 'mdi-action-done padding-1px tiny orange-text'
+			} else {
+				return 'mdi-action-done padding-1px tiny'
+			}
+		},
+		hideSeenClass: function() {
+			if (this.hideSeen) {
+				return 'mdi-action-visibility padding-1px tiny orange-text'
+			} else {
+				return 'mdi-action-visibility padding-1px tiny'
+			}
+		},
+		categoryButtonClass: function() {
+			if (this.c != 'c.') {
+				return this.modalButtonClass + ' orange-text'
+			} else {
+				return this.modalButtonClass
+			}
+		},
+		groupButtonClass: function() {
+			if (this.g != 'g.') {
+				return this.modalButtonClass + ' orange-text'
+			} else {
+				return this.modalButtonClass
+			}
+		},
+		beingButtonClass: function() {
+			if (this.b != 'b.') {
+				return this.modalButtonClass + ' orange-text'
+			} else {
+				return this.modalButtonClass
+			}
+		},
+		teacherButtonClass: function() {
+			if (this.t != 't.') {
+				return this.modalButtonClass + ' orange-text'
+			} else {
+				return this.modalButtonClass
+			}
+		},
+		receiverButtonClass: function() {
+			if (this.r != 'r.') {
+				return this.modalButtonClass + ' orange-text'
+			} else {
+				return this.modalButtonClass
+			}
+		},
+		modalShowClass: function() {
+			if (this.showFilters) {
+				return ''
+			} else {
+				return 'hide'
+			}
+		},
+
+		isFilterCleared: function() {
+			return (this.c == 'c.' &&
+				this.g == 'g.' &&
+				this.b == 'b.' &&
+				this.t == 't.' &&
+				this.r == 'r.')
+		},
+
+
+	},
+
+	methods: {
+
+		initFilters: function() {
+
+		},
+		clearFilters: function() {
+			this.c = 'c.'; 
+			this.g = 'g.'; 
+			this.b = 'b.'; 
+			this.t = 't.'; 
+			this.r = 'r.'; 
+		},
+
+		showSearchCard: function(mark) {
+			return !(this.hideFavorite && mark==3 || 
+					this.hideRead && mark==2 || 
+					this.hideSeen && mark==1)
+		},
+
+		toggleFilterList: function() {
+			if (this.showFilters) {
+				if (!this.isFilterCleared) {
+					swal({   title: "Removing Search Filters",
+						text: "Your search filters are cleared now",
+						type: "success",
+						showConfirmButton: false,
+						timer: 2000
+						}
+					);
+					this.clearFilters();
+				}
+				// Clearing filters
+				this.showFilters = false;
+			} else {
+				/*if (this.showswal) swal({   title: "Adding Search filters!",
+					text: "Select filters from the links below",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				}); */
+				this.showFilters = true
+			}
+		},
+
+		toggleRangeSlider: function() {
+			if (this.showSlider) {
+				/* if (this.showswal) swal({   title: "Clear Date filter ?",   
+					text: "Date filter has been cleared now.",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				}); */
+				this.showSlider = false
+				this.y1 = 0
+				this.y2 = 0
+			} else {
+				/*if (this.showswal) swal({   title: "Adding Date filter!",
+					text: "Select date-range to filter posts by date",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				});*/
+				this.showSlider = true
+			}
+		},
+
+		toggleMobileFilters: function() {
+			this.toggleRangeSlider()
+			this.toggleFilterList()
+		},
+
+		toggleFavorite: function() {
+			this.hideFavorite = !this.hideFavorite
+			if (this.hideFavorite) {
+				if (this.showswal) swal({   title: "Hiding Favorite posts!",   
+					text: "Your favorite post won't appear in the search results",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				});
+			} else {
+				if (this.showswal) swal({   title: "Unhiding Favorite posts!",   
+					text: "Your Favorite posts will now appear in the search results",   
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				});
+			}
+		},
+
+		toggleRead: function() {
+			this.hideRead = !this.hideRead
+			// alert('Hide Completed: '+ this.hideCompletedTranscripts)
+			if (this.hideRead) {
+				if (this.showswal) swal({   title: "Hiding Read posts!",   
+					text: "Your already read posts won't appear in the search results",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				});
+			} else {
+				if (this.showswal) swal({   title: "Unhiding Read posts!",   
+					text: "Your already read posts will also now appear in the search results",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				});
+			}
+		},
+
+		toggleSeen: function() {
+			this.hideSeen = !this.hideSeen
+			if (this.hideSeen) {
+				if (this.showswal) swal({   title: "Hiding Seen posts!",   
+					text: "Your already seen posts won't appear in the search results",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				});
+			} else {
+				if (this.showswal) swal({   title: "Unhiding Seen posts!",   
+					text: "Your already seen posts will also now appear in the search results",
+					type: "success",
+					timer: 2000,   
+					showConfirmButton: false,
+				});
+			}
+		}
+	}
+
+})
+</script>

@@ -1,0 +1,29 @@
+{{ define "content" }}
+<div class="home-searchbar">
+	<div class="row">
+		<div class="col l8 offset-l2 center">
+
+			<img src="/images/tm-search-banner.png" class="search-results-banner hide-on-med-and-down">
+			<img src="/images/tm-search-banner-medium.png" class="search-results-banner hide-on-large-only hide-on-small-only">
+			<img src="/images/tm-search-banner-small.png" class="search-results-banner hide-on-med-and-up">
+
+		</div>
+	</div>
+    {{ template "archives.tmpl" . }}
+    <br>
+</div>
+{{ end }}
+
+{{ define "css" }}
+    <link href="/css/plugins/sweetalert2.css" type="text/css" rel="stylesheet" media="screen,projection">
+{{ end }}
+
+{{ define "scripts" }}
+    <!--sweetalert -->
+    <script type="text/javascript" src="/js/plugins/sweetalert/dist/sweetalert2.min.js"></script>
+    <!--angularjs-->
+    <script type="text/javascript" src="/js/plugins/angular.min.js"></script>
+    <script type="text/javascript" src="/js/search.js"></script>
+    {{ template "searchbar-js.tmpl" . }}
+
+{{ end }}

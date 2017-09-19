@@ -1,0 +1,16 @@
+{{ define "widget-receivers" }}
+<div class="row">
+	<div class="col s12">
+		<div class="card">
+			<div class="card-content">
+				<p class="header">Receivers</p>
+				<div class="collection">
+				{{ range .Listings.Receivers.Receivers}}
+					<a href="#!" class="collection-item">{{ .Name }}</a>
+				{{ end }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ end }}

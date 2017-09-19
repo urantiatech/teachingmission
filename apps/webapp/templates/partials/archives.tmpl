@@ -1,0 +1,11 @@
+{{ with .Listings }}
+    <div class="row">
+    {{ range $section := .Sections.Sections }}
+
+        <div class="col s12 m6 l4">
+            {{ sectionAd "section1.png" "/archives"}}
+        </div>
+
+    {{ end }}
+    </div>
+{{ end }}

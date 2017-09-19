@@ -1,0 +1,34 @@
+{{ define "header" }}
+    <!-- Banner start -->
+    {{ template "banner.tmpl" . }}
+    <!-- Banner end -->
+
+    <!-- Quote start -->
+    {{ template "quote.tmpl" . }}
+    <!-- Quote end -->
+    
+    <!-- Breadcrumb start -->
+    {{ template "breadcrumb.tmpl" . }}
+    <!-- Breadcrumb end -->
+{{ end }}
+
+{{ define "content" }}
+    <!-- Article start -->
+    <div id="content-area">
+    {{ template "article.tmpl" . }}
+    {{ template "definitions.tmpl" . }}
+    </div>
+    <!-- Article end -->
+{{ end }}
+
+{{ define "sidebar" }}
+    {{ block "widget-beings" . }}{{ end }}
+    {{ block "widget-teachers" . }}{{ end }}
+    {{ block "widget-receivers" . }}{{ end }}
+    {{ block "widget-categories" . }}{{ end }}
+    {{ block "widget-topics" . }}{{ end }}
+{{ end }}
+
+{{ define "bottom-ads" }}
+    {{ template "ads-bottom.tmpl" . }}
+{{ end }}

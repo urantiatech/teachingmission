@@ -1,0 +1,111 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "vue-slider-component",
+        "scope": null,
+        "escapedName": "vue-slider-component",
+        "name": "vue-slider-component",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Volumes/Users/sangeetk/github.com"
+    ]
+  ],
+  "_from": "vue-slider-component@latest",
+  "_id": "vue-slider-component@2.3.9",
+  "_inCache": true,
+  "_location": "/vue-slider-component",
+  "_nodeVersion": "7.4.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/vue-slider-component-2.3.9.tgz_1503317129716_0.034562403336167336"
+  },
+  "_npmUser": {
+    "name": "nightcatsama",
+    "email": "642163903@qq.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "vue-slider-component",
+    "scope": null,
+    "escapedName": "vue-slider-component",
+    "name": "vue-slider-component",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/vue-slider-component/-/vue-slider-component-2.3.9.tgz",
+  "_shasum": "3d2b8107d065fbb18ffb4705de8cf9ba1be45b72",
+  "_shrinkwrap": null,
+  "_spec": "vue-slider-component",
+  "_where": "/Volumes/Users/sangeetk/github.com",
+  "author": {
+    "name": "NightCatSama",
+    "email": "642163903@qq.com"
+  },
+  "browserify": {
+    "transform": [
+      "vueify"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/NightCatSama/vue-slider-component/issues"
+  },
+  "dependencies": {},
+  "description": "Can use the Slider component in vue1.x and vue2.x",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-runtime": "^6.23.0",
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.15.0",
+    "vue": "^2.2.4",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^11.1.4",
+    "vue-style-loader": "^2.0.4",
+    "vue-template-compiler": "^2.2.4",
+    "webpack": "^2.2.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "3d2b8107d065fbb18ffb4705de8cf9ba1be45b72",
+    "tarball": "https://registry.npmjs.org/vue-slider-component/-/vue-slider-component-2.3.9.tgz"
+  },
+  "gitHead": "e4ef9aa129ec599f78c76688892149d67f5e7729",
+  "homepage": "https://github.com/NightCatSama/vue-slider-component#readme",
+  "keywords": [
+    "vue",
+    "slider",
+    "vue-slider",
+    "vue-component",
+    "vue-slider-component"
+  ],
+  "licenses": "MIT",
+  "main": "./dist/index.js",
+  "maintainers": [
+    {
+      "name": "nightcatsama",
+      "email": "642163903@qq.com"
+    }
+  ],
+  "name": "vue-slider-component",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NightCatSama/vue-slider-component.git"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && webpack --colors --hide-modules"
+  },
+  "version": "2.3.9"
+}

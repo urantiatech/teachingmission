@@ -1,0 +1,16 @@
+{{ define "widget-categories" }}
+<div class="row">
+	<div class="col s12">
+		<div class="card grey lighten-3">
+			<div class="card-content">
+				<h4 class="header">Categories</h4>
+				<div class="collection">
+				{{ range .Listings.Categories.Categories}}
+					<a href="#!" class="collection-item">{{ .Name }}</a>
+				{{ end }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ end }}

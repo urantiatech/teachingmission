@@ -1,0 +1,79 @@
+{{ with .Listings }}
+
+    {{ if .Categories.Count }}
+    <div class="card grey lighten-2">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 l12">
+                    <h5>Topics</h5>
+                    <ul class="collection">
+                    {{ with .Categories}}
+                        {{ range .Categories }}
+                            <a href="/category/{{- .Id -}}" class="collection-item orange-text">{{ .Name }}</a>
+                        {{ end }}
+                    {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if .Teachers.Count }}
+    <div class="card grey lighten-2">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 m6 l12">
+                    <h5>Teachers</h5>
+                    <ul class="collection">
+                    {{ with .Teachers }}
+                        {{ range .Teachers }}
+                            <a href="/category/{{- .Id -}}" class="collection-item orange-text">{{ .Name }}</a>
+                        {{ end }}
+                    {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if .Beings.Count }}
+    <div class="card grey lighten-2">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 m6 l12">
+                    <h5>Beings</h5>
+                    <ul class="collection">
+                    {{ with .Beings }}
+                        {{ range .Beings }}
+                            <a href="/category/{{- .Id -}}" class="collection-item orange-text">{{ .Name }}</a>
+                        {{ end }}
+                    {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if .Receivers.Count }}
+    <div class="card grey lighten-2">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 m6 l12">
+                    <h5>Receivers</h5>
+                    <ul class="collection">
+                    {{ with .Receivers }}
+                        {{ range .Receivers }}
+                            <a href="/category/{{- .Id -}}" class="collection-item orange-text">{{ .Name }}</a>
+                        {{ end }}
+                    {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+{{ end }}

@@ -1,0 +1,13 @@
+{{ define "page-contents" }}
+    <!-- Page Header start -->
+    {{ block "header" . }}{{ end }}
+    <!-- Page Header end -->
+
+    <!-- Page Content start -->
+    <div class="row">
+        <div class="col s12 m12 l12" id="content-area">
+            {{ block "content" . }}{{ end }}
+        </div>
+    </div>
+    <!-- Page Content end -->
+{{ end }}

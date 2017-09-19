@@ -1,0 +1,21 @@
+<div class="row hide-on-med-and-down">
+	<div class="col s12">
+	    <nav>
+	        <div class="nav-wrapper">
+	            <div class="col s12">
+
+				{{ with .Breadcrumb }}
+	                {{ range $t := .Titles }}
+	                	{{ if eq $t "/" }}
+			                <a href="/" class="breadcrumb"><i class="mdi-action-home"></i> Home</a>
+			            {{ else if eq $t "page" }}
+		                {{  else }}
+			                <a href="#!" class="breadcrumb">{{ title . }}</a>
+	                	{{ end }}
+	                {{ end }}
+				{{ end }}
+	            </div>
+	        </div>
+	    </nav>
+    </div>
+</div>
